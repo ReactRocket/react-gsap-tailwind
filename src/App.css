@@ -1,0 +1,48 @@
+.text-orange {
+  color: #f47024;
+}
+.text-gray {
+  color: #28282b;
+}
+.section-container {
+  min-height: 90vh;
+  height: 600px;
+  width: 100%;
+}
+.bg-orange {
+  background-color: #f47024;
+}
+.bg-gray {
+  background-color: #28282b;
+}
+.bg-section-1 {
+  background-image: url("/public/media/images/section1-bg.png");
+}
+.bg-section-3-right {
+  background-image: url("/public/media/images/section3-img1.png");
+}
+.bg-section-3-left {
+  background-image: url("/public/media/images/section3-img2.png");
+}
+.bg-section-3-main {
+  background-image: url("/public/media/images/section3-img3.png");
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  scale: 75%;
+}
+.bg-section-4-img1 {
+  background-image: url("/public/media/images/section4-img1.png");
+}
+.bg-section-4-img2 {
+  background-image: url("/public/media/images/section4-img2.png");
+}
+.bg-section-7-img1 {
+    background-image: url("/public/media/images/section7-img1.png");
+  }
+.btn-section-1 {
+  border: 2px solid #f47024;
+  font-weight: bold;
+}
