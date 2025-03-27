@@ -24,58 +24,65 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="w-[90%]  min-h-[400px] h-auto place-items-center grid grid-cols-3  px-5 pb-14">
-            <div className="w-full h-auto flex flex-col gap-3 text-white">
-              <h1 className="letter-spacing-3 text-4xl font-bold text-start">Logo</h1>
-              <p className="mt-5">Our expert advisors offer strategic investment planning, risk management.</p>
-              <ul className="flex gap-1">
-                <li>
-                  <a href="#">
-                    <img src="/media/icons/linkedin.svg" alt="" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/media/icons/twitter.svg" alt="" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/media/icons/facebook.svg" alt="" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="/media/icons/instagram.svg" alt="" />
-                  </a>
-                </li>
+        <div className="w-[90%] flex justify-end items-center px-5 pb-14">
+          <div className="w-full h-auto flex flex-col gap-3 text-white">
+            <h1 className="letter-spacing-3 text-4xl font-bold text-start">
+              Logo
+            </h1>
+            <p className="mt-5">
+              Our expert advisors offer strategic investment planning, risk
+              management.
+            </p>
+            <ul className="flex gap-1">
+              <li>
+                <a href="#">
+                  <img src="/media/icons/linkedin.svg" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/media/icons/twitter.svg" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/media/icons/facebook.svg" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/media/icons/instagram.svg" alt="" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="w-full flex justify-center items-center gap-10">
+            <div className="flex flex-col">
+              <h3 className="text-white font-semibold">Explore</h3>
+              <ul className=" mt-4 flex flex-col gap-1 text-white">
+                <li>About Us</li>
+                <li>Our Offerings</li>
+                <li>Knowledge Centre</li>
+                <li>Contact Us</li>
               </ul>
             </div>
-            <div className="flex justify-around items-center gap-10">
-              <div className="flex flex-col">
-                <h3 className="text-white font-semibold">Explore</h3>
-                <ul className=" mt-4 flex flex-col gap-1 text-white">
-                  <li>About Us</li>
-                  <li>Our Offerings</li>
-                  <li>Knowledge Centre</li>
-                  <li>Contact Us</li>
-                </ul>
-              </div>
-              <div className="flex flex-col">
-                <h3 className="text-white font-semibold">SEBI Details</h3>
-                <ul className=" mt-4 flex flex-col gap-1 text-white">
-                  <li>Stock code:</li>
-                  <li>123456</li>
-                  <li>ISIN number:</li>
-                  <li>INE 123D01010</li>
-                </ul>
-              </div>
+            <div className="flex flex-col">
+              <h3 className="text-white font-semibold">SEBI Details</h3>
+              <ul className=" mt-4 flex flex-col gap-1 text-white">
+                <li>Stock code:</li>
+                <li>123456</li>
+                <li>ISIN number:</li>
+                <li>INE 123D01010</li>
+              </ul>
             </div>
-            <div className="flex flex-col justify-center items-start gap-1">
-              <p className="text-white">Have any query in your mind?</p>
-              <h1 className="text-6xl mt-3 text-white font-bold">Let’s Talk</h1>
-              <button className="border mt-1 border-orange text-orange px-4 max-w-[200px] py-2">Let’s have a Call</button>
-            </div>
+          </div>
+          <div className="w-full flex flex-col justify-center items-start gap-1">
+            <p className="text-white">Have any query in your mind?</p>
+            <h1 className="text-6xl mt-3 text-white font-bold">Let’s Talk</h1>
+            <button className="border mt-1 border-orange text-orange px-4 max-w-[200px] py-2">
+              Let’s have a Call
+            </button>
+          </div>
         </div>
       </div>
     </div>
