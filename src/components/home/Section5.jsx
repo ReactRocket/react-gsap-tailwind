@@ -139,7 +139,9 @@ const Section5 = () => {
         ref={rightRef}
         className="h-full w-1/2  flex  justify-center items-center "
       >
-        <div className="flex flex-col items-start justify-center gap-2 max-w-[300px]">
+        <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" className="flex flex-col items-start justify-center gap-2 max-w-[300px]">
           <h5 className="text-gray font-normal">
             {contentData[activeIndex].number}
           </h5>

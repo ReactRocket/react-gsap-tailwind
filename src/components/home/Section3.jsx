@@ -64,7 +64,7 @@ const Section3 = () => {
 
       {/* Animated Card Section */}
       <div className="w-full h-full bg-orange p-14 flex transition-opacity duration-700 ease-in-out">
-        <div className="w-[60%] h-full flex flex-col justify-between items-start">
+        <div data-aos="zoom-in" className="w-[60%] h-full flex flex-col justify-between items-start">
           <div className="text-white flex flex-col items-start justify-start gap-6">
             <h6 className="text-sm">{cards[activeIndex].number}</h6>
             <h1 className="font-bold text-2xl">{cards[activeIndex].title}</h1>

@@ -4,10 +4,10 @@ const Section4 = () => {
   return (
     <div className="section-container relative bg-[#F470241A] overflow-hidden flex">
       <div className="h-full w-1/2 relative">
-        <div className=" absolute bottom-0 bg-section-4-img2  w-full h-[80%] bg-contain bg-no-repeat bg-bottom"></div>
+        <div data-aos="zoom-in" className=" absolute bottom-0 bg-section-4-img2  w-full h-[80%] bg-contain bg-no-repeat bg-bottom"></div>
       </div>
-      <div className="h-full w-1/2 pr-14 flex flex-col justify-center items-start gap-5 ">
-        <div>
+      <div data-aos="zoom-in-up" className="h-full w-1/2 pr-14 flex flex-col justify-center items-start gap-5 ">
+        <div >
           <h5 className="text-gray font-normal">Message</h5>
           <h1 className="font-semibold text-2xl text-black">What our</h1>
           <h1 className="font-extrabold text-2xl text-orange">CEO Says</h1>

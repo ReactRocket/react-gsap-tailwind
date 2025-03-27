@@ -1,18 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useStepPathAnimation from '../../animations/useStepPathAnimation';
-import useGsapAnimations from '../../hooks/useGsapAnimations';
 const Section1 = () => {
   useStepPathAnimation(); // Hook to trigger animation
-  const {elementRef,slide} = useGsapAnimations()
-
-  useEffect(() => {
-    slide("bottom","in",0.5,2)
-  }, [])
   
 
   return (
     <div className=' section-container-1 flex bg-section-1' >
-        <div ref={elementRef} className='w-full h-full p-14 flex flex-col gap-2 justify-end items-start'>
+        <div data-aos="fade-up" className='w-full h-full p-14 flex flex-col gap-2 justify-end items-start'>
             <h5  className='text-gray font-extralight'>About Us</h5>
             <h1  className='font-semibold text-5xl text-black'>Empowering</h1>
             <h1  className='font-bold text-5xl text-orange'>Your Financial Future</h1>

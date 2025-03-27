@@ -41,7 +41,8 @@ const Section7 = () => {
   return (
     <div ref={sectionRef} className="section-container flex min-h-screen w-full">
       {/* Left Side */}
-      <div className="w-1/2 flex flex-col justify-start gap-1 px-14 py-20 relative">
+      <div data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" className="w-1/2 flex flex-col justify-start gap-1 px-14 py-20 relative">
         <h5 className="text-gray font-extralight">Join our team</h5>
         <h1 className="font-extrabold text-2xl text-black">Careers at</h1>
         <h1 className="font-extrabold text-2xl text-orange">Our Company</h1>

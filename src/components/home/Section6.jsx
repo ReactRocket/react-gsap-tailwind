@@ -165,7 +165,7 @@ const Section6 = () => {
   return (
     <div ref={sectionRef} className="section-container flex flex-col items-center w-full min-h-screen">
       {/* Section Title */}
-      <div className="w-full text-start p-14">
+      <div data-aos="fade-up" className="w-full text-start p-14">
         <h5 className="text-gray-500 font-light">Our Team</h5>
         <h1 className="font-semibold text-3xl text-black">The Minds Behind</h1>
         <h1 className="font-bold text-3xl text-orange-500">Our Company</h1>

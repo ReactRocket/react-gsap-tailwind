@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer-container  flex flex-col justify-end">
       <div className="relative w-full max-h-[660px] h-[80%] bg-gray flex flex-col justify-end items-center">
-        <div className="absolute -top-20 translate right-1/2 translate-x-1/2 w-[90%] m-auto h-[150px] bg-orange flex px-14 py-10">
+        <div data-aos="zoom-in" className="absolute -top-20 translate right-1/2 translate-x-1/2 w-[90%] m-auto h-[150px] bg-orange flex px-14 py-10">
           <div className="w-full h-full flex flex-col justify-center gap-3 text-2xl text-white items-start">
             <h3>Subscribe for regular</h3>
             <h3>
