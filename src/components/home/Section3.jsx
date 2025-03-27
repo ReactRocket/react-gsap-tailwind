@@ -59,28 +59,36 @@ const Section3 = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="section-container relative p-14 bg-section-1 overflow-hidden h-screen flex justify-center items-center">
-      <div className="absolute top-[-50px] left-[-50px] size-[500px] bg-section-3-left bg-contain"></div>
+    <div 
+      ref={sectionRef} 
+      className="custom-section-container relative p-6 md:p-14 bg-section-1 overflow-hidden h-screen flex justify-center items-center"
+    >
+      <div className="absolute top-[-43px] left-[-30px] md:top-[-50px] md:left-[-50px] size-[300px] md:size-[500px] bg-section-3-left bg-contain" />
 
       {/* Animated Card Section */}
-      <div className="w-full h-full bg-orange p-14 flex transition-opacity duration-700 ease-in-out">
-        <div data-aos="zoom-in" className="w-[60%] h-full flex flex-col justify-between items-start">
-          <div className="text-white flex flex-col items-start justify-start gap-6">
-            <h6 className="text-sm">{cards[activeIndex].number}</h6>
-            <h1 className="font-bold text-2xl">{cards[activeIndex].title}</h1>
-            <h4>{cards[activeIndex].subtitle}</h4>
-            <p className="text-normal text-justify">{cards[activeIndex].description}</p>
+      <div className="w-full h-full bg-orange p-6 md:p-14 flex flex-col md:flex-row transition-opacity duration-700 ease-in-out">
+        <div 
+          data-aos="zoom-in" 
+          className="w-full md:w-[60%] h-full flex flex-col justify-between items-start"
+        >
+          <div className="text-white flex flex-col items-start justify-start gap-4 md:gap-6">
+            <h6 className="text-xs md:text-sm">{cards[activeIndex].number}</h6>
+            <h1 className="font-bold text-xl md:text-2xl">{cards[activeIndex].title}</h1>
+            <h4 className="text-sm md:text-base">{cards[activeIndex].subtitle}</h4>
+            <p className="text-sm md:text-normal text-justify">{cards[activeIndex].description}</p>
           </div>
-          <div>
-            <button className="border hover:text-orange-500 cursor-pointer hover:bg-white border-white font-bold text-white px-4 py-2">Learn More</button>
+          <div className="mt-4 md:mt-0">
+            <button className="border hover:text-orange-500 cursor-pointer hover:bg-white border-white font-bold text-white px-3 py-1 md:px-4 md:py-2 text-sm md:text-base">
+              Learn More
+            </button>
           </div>
         </div>
-        <div className="w-[40%] h-full">
-          <div className="bg-section-3-main"></div>
+        <div className="w-full md:w-[40%] h-full mt-6 md:mt-0">
+          <div className="bg-section-3-main h-full w-full" />
         </div>
       </div>
 
-      <div className="absolute bottom-[-100px] right-[-50px] size-[500px] bg-section-3-right bg-contain"></div>
+      <div className="absolute bottom-[-60px] right-[-30px] md:bottom-[-100px] md:right-[-50px] size-[300px] md:size-[500px] bg-section-3-right bg-contain" />
     </div>
   );
 };

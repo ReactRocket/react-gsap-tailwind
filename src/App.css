@@ -11,6 +11,13 @@
   width: 100%;
   overflow: hidden !important;
 }
+.custom-section-container {
+  min-height: 100vh;
+  max-height: 1080px;
+  height: 600px;
+  width: 100%;
+  overflow: hidden !important;
+}
 .section-container {
   min-height: 100vh;
   max-height: 1080px;
@@ -23,7 +30,6 @@
   max-height: 550px;
   height: 500px;
   width: 100%;
-  overflow: hidden !important;
 }
 .bg-orange {
   background-color: #f47024;
@@ -193,4 +199,111 @@
   font-size: 25px;
   background-color: #f47024;
   transition: 1s;
+}
+
+/* Your existing classes remain the same above this point */
+
+/* Add these media queries at the bottom of your CSS */
+
+@media (max-width: 768px) {
+  .section-container-1,
+  .section-container {
+    min-height: 70vh;
+    height: auto;
+    max-height: none;
+  }
+
+  .footer-container {
+    min-height: 50vh;
+    height: auto;
+    max-height: none;
+  }
+
+  .bg-section-1-graph {
+    background-size: contain;
+    height: 50%;
+  }
+
+  .bg-section-3-main {
+    scale: 60%;
+  }
+
+  .button,
+  .buttonEffect {
+    padding: 2px 5px !important;
+    font-size: 14px;
+  }
+
+  .buttonSlider {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container-1,
+  .section-container {
+    min-height: 60vh;
+    height: auto;
+    max-height: none;
+  }
+
+  .footer-container {
+    min-height: 40vh;
+    height: auto;
+    max-height: none;
+  }
+
+  .text-orange,
+  .text-gray {
+    font-size: 14px;
+  }
+
+  .bg-section-1-graph {
+    background-size: cover;
+    height: 40%;
+    background-position: center;
+  }
+
+  .bg-section-3-main {
+    scale: 50%;
+    background-size: cover;
+  }
+
+  .button,
+  .buttonEffect {
+    padding: 1px 4px !important;
+    font-size: 12px;
+  }
+
+  .buttonSlider {
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    padding: 3px;
+  }
+
+  .btn-section-1 {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-section-3-right,
+  .bg-section-3-left,
+  .bg-section-4-img1,
+  .bg-section-4-img2,
+  .bg-section-7-img1 {
+    background-size: contain;
+    background-position: center;
+  }
+
+  .button,
+  .buttonEffect,
+  .buttonSlider {
+    min-width: 44px;
+    min-height: 35px;
+  }
 }
