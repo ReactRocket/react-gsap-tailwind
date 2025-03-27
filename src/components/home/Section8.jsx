@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Section8 = () => {
   const data = [
@@ -10,45 +10,37 @@ const Section8 = () => {
         "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Mr. Anil Mehta",
+      title: "CEO",
       image: "/media/images/section8-img1.png",
       description:
         "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Ms. Priya Sharma",
+      title: "Marketing Head",
       image: "/media/images/section8-img1.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Ms. Priya Sharma leads the marketing team with innovation and strategic vision.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Mr. Rajesh Khanna",
+      title: "Finance Head",
       image: "/media/images/section8-img1.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Mr. Rajesh Khanna ensures financial stability and growth with expert insights.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Ms. Neha Kapoor",
+      title: "HR Manager",
       image: "/media/images/section8-img1.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Ms. Neha Kapoor manages human resources with a focus on employee engagement and growth.",
     },
-    {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
-      image: "/media/images/section8-img1.png",
-      description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
-    },
-    // Add more team members here
   ];
 
   return (
-    <div className="section-container flex flex-col items-center">
+    <div className="section-container flex flex-col items-center w-full">
       {/* Section Title */}
       <div className="w-full text-start p-14">
         <h5 className="text-gray-500 font-light">Updates</h5>
@@ -56,27 +48,29 @@ const Section8 = () => {
         <h1 className="font-bold text-3xl text-orange-500">Our Company</h1>
       </div>
 
-      {/* Carousel Container */}
-      <div className=" flex items-center justify-center w-full   overflow-hidden px-10">
-        {/* Slides */}
-        <div className="flex w-full justify-center items-center space-x-2 overflow-x-auto">
+      {/* Horizontal Scroll Container */}
+      <div className="w-full h-full px-10 overflow-hidden">
+        <div
+          className="grid grid-flow-col auto-cols-[minmax(400px,_1fr)] gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollBehavior: "smooth" }}
+        >
           {data.map((item, index) => (
             <div
               key={index}
-              className={`transition-transform duration-500 ease-in-out transform `}
+              className="snap-start  bg-white rounded-lg  p-4 w-full flex flex-col items-center"
             >
-              <div className="relative w-[300px]  h-auto">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-auto object-contain rounded-lg shadow-lg"
-                />
-                
-                  <div className="  text-gray p-3 rounded-md">
-                    <h1 className="font-semibold text-lg">{item.name}</h1>
-                    <h2 className="text-sm text-gray-300">{item.title}</h2>
-                    <p className="text-xs mt-1">{item.description}</p>
-                  </div>
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover"
+              />
+              <div className="p-3 text-center  w-full h-full flex flex-col gap-3   bg-[#F470240D]">
+                <div className="flex justify-between items-center"><span>News</span><span>15, Feb, 25</span></div>
+                <div className="flex flex-col items-start justify-end gap-2 w-full">
+                  <h1 className="font-extrabold text-2xl text-black">Lorem Ipsum Dolor</h1>
+                  <h1 className="font-extrabold text-2xl text-black">Sit Amet</h1>
+                  <button className="border border-orange text-orange max-w-[200px] px-4 py-2 font-bold">Read More</button>
+                </div>
               </div>
             </div>
           ))}
