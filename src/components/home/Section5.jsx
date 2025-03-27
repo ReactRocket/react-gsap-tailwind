@@ -1,32 +1,156 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Section5 = () => {
+  const sectionRef = useRef(null);
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const contentData = [
+    {
+      number: "01",
+      title: "Foundation",
+      subtitle: "Brand Essence",
+      description:
+        "Our journey began with a vision for innovation and excellence.",
+    },
+    {
+      number: "02",
+      title: "Growth",
+      subtitle: "Scaling Up",
+      description: "Expanding our expertise and reaching new milestones.",
+    },
+    {
+      number: "03",
+      title: "Innovation",
+      subtitle: "Shaping the Future",
+      description: "Pushing boundaries to redefine industry standards.",
+    },
+    {
+      number: "04",
+      title: "Impact",
+      subtitle: "Global Reach",
+      description:
+        "Making a difference with sustainable and ethical practices.",
+    },
+    {
+      number: "04",
+      title: "Impact",
+      subtitle: "Global Reach",
+      description:
+        "Making a difference with sustainable and ethical practices.",
+    },
+  ];
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      let timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          pin: true,
+          start: "top top",
+          end: "+=300%",
+          scrub: 1,
+          onUpdate: (self) => {
+            let index = Math.floor(self.progress * (contentData.length - 0.1));
+            setActiveIndex(index);
+          },
+        },
+      });
+
+      timeline.to(rightRef.current, { opacity: 1, duration: 0.5 });
+
+      contentData.forEach((_, i) => {
+        timeline.to(
+          `.circle-${i}`,
+          { borderColor: "#fff", duration: 0.5 },
+          `step-${i}`
+        );
+      });
+
+      timeline.to(
+        rightRef.current,
+        { opacity: 0, width: 0, duration: 1 },
+        "final-step"
+      );
+      timeline.to(
+        leftRef.current,
+        { width: "100%", duration: 1 },
+        "final-step"
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="section-container flex">
-      <div className="h-full w-full bg-orange flex flex-col items-center justify-between p-14 text-white">
+    <div ref={sectionRef} className="section-container flex">
+      <div
+        ref={leftRef}
+        className="h-full w-1/2 bg-orange flex flex-col items-center justify-between p-14 text-white"
+      >
         <div className="flex flex-col items-center gap-1">
           <h6 className="text-sm">Our Brand Story</h6>
           <h1 className="text-2xl font-extrabold">Brand Foundation</h1>
         </div>
-        <div className="border border-white size-[400px] rounded-full flex items-end mb-3 justify-center">
-          <div className="size-[300px] border-2 border-dashed border-spacing-10 border-white rounded-full flex items-end mb-3 justify-center">
-            <div className="size-[200px] border border-white rounded-full flex items-end mb-3 justify-center"> 
-              <div className="size-[100px] border border-white rounded-full flex items-end mb-3 justify-center">
+        <div
+          className={`relative ${
+            activeIndex + 1 == 1
+              ? "border-2 border-dashed border-spacing-10"
+              : "border"
+          }  border-white size-[400px] rounded-full flex ${activeIndex > 3 ? 'items-center' : 'items-end'} mb-3 justify-center`}
+        >
+          { activeIndex + 1 == 1 && <span className="absolute top-5">{contentData[activeIndex].title}</span>}
+          <div
+            className={`size-[300px] relative ${
+              activeIndex + 1 == 2
+                ? "border-2 border-dashed border-spacing-10"
+                : "border"
+            }  border-white rounded-full flex ${activeIndex > 3 ? 'items-center' : 'items-end'} mb-3 justify-center`}
+          >
+            { activeIndex + 1 == 2 && <span className="absolute top-5">{contentData[activeIndex].title}</span>}
+            <div
+              className={`size-[200px] relative ${
+                activeIndex + 1 == 3
+                  ? "border-2 border-dashed border-spacing-10"
+                  : "border"
+              } border-white rounded-full flex ${activeIndex > 3 ? 'items-center' : 'items-end'} mb-3 justify-center`}
+            >
+              { activeIndex + 1 == 3 && <span className="absolute top-5">{contentData[activeIndex].title}</span>}
+              <div
+                className={`size-[100px] relative ${
+                  activeIndex + 1 == 4
+                    ? "border-2 border-dashed border-spacing-10"
+                    : "border"
+                } border-white rounded-full flex ${activeIndex > 3 ? 'items-center' : 'items-end'} mb-3 justify-center`}
+              >
+                { activeIndex + 1 == 4 && <span className="absolute top-5">{contentData[activeIndex].title}</span>}
+                { activeIndex + 1 == 5 && <span className="absolute top-5">{contentData[activeIndex].title}</span>}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="h-full w-full  flex  justify-center items-center ">
+      <div
+        ref={rightRef}
+        className="h-full w-1/2  flex  justify-center items-center "
+      >
         <div className="flex flex-col items-start justify-center gap-2 max-w-[300px]">
-          <h5 className="text-gray font-normal">02</h5>
-          <h1 className="font-bold text-2xl text-black">Lorem Ipsum</h1>
+          <h5 className="text-gray font-normal">
+            {contentData[activeIndex].number}
+          </h5>
+          <h1 className="font-bold text-2xl text-black">
+            {contentData[activeIndex].title}
+          </h1>
           <h1 className="font-extrabold text-2xl text-orange">
-            Dolor Sit Aamet
+            {contentData[activeIndex].subtitle}
           </h1>
           <p className="text-lg leading-7 text-start text-gray font-light">
-            Our expert advisors offer strategic investment planning, risk
-            management.
+            {contentData[activeIndex].description}
           </p>
         </div>
       </div>

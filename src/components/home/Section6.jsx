@@ -1,72 +1,169 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Section6 = () => {
+  const sectionRef = useRef(null);
+  const cardsContainerRef = useRef(null);
+  const dataContainerRef = useRef(null);
+
   const data = [
     {
       name: "Mr. Manoj Singrodia",
       title: "General Manager",
       image: "/media/images/section7-img2.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Mr. Manoj Singrodia drives operational excellence as General Manager with strategic innovation and a passion for organizational success.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Mr. Anil Mehta",
+      title: "CEO",
       image: "/media/images/section7-img2.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth with strategic innovation.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Ms. Priya Sharma",
+      title: "Marketing Head",
       image: "/media/images/section7-img2.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Ms. Priya Sharma leads marketing with innovation and strategic vision, enhancing brand growth and market presence.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Mr. Rajesh Khanna",
+      title: "Finance Head",
       image: "/media/images/section7-img2.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Mr. Rajesh Khanna ensures financial stability with expert insights, guiding the company towards sustainable growth.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Ms. Neha Kapoor",
+      title: "HR Manager",
       image: "/media/images/section7-img2.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Ms. Neha Kapoor focuses on employee engagement and growth, fostering a positive and productive work environment.",
     },
     {
-      name: "Mr. Manoj Singrodia",
-      title: "General Manager",
+      name: "Mr. Vikram Patel",
+      title: "Tech Lead",
       image: "/media/images/section7-img2.png",
       description:
-        "Mr. Anil Mehta, CEO of Ladder UP, is a visionary leader driving financial empowerment and business growth.",
+        "Mr. Vikram Patel spearheads technological innovation, driving the company’s digital transformation.",
     },
-    // Add more team members here
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Auto-slide every 5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [currentIndex]);
+    const section = sectionRef.current;
+    const cardsContainer = cardsContainerRef.current;
+    const cards = cardsContainer.children;
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-  };
+    // Calculate total scroll distance
+    const cardWidth = cards[0].offsetWidth;
+    const totalWidth = cardsContainer.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const scrollDistance = totalWidth - viewportWidth + cardWidth; // Adjust for centering
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
-  };
+    // Horizontal scroll animation
+    gsap.to(cardsContainer, {
+      x: -scrollDistance,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${scrollDistance}`,
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // Scale and opacity for each card, update data
+    Array.from(cards).forEach((card, index) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: "left center",
+        end: "right center",
+        scrub: 1,
+        onEnter: () => {
+          gsap.to(card, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+          // Update data
+          gsap.to(dataContainerRef.current, {
+            opacity: 0,
+            duration: 0.2,
+            onComplete: () => {
+              dataContainerRef.current.innerHTML = `
+                <h1 class="font-extrabold text-3xl text-black">${data[index].name}</h1>
+                <h2 class="text-lg text-gray-500">(${data[index].title})</h2>
+                <p class="text-gray-600 mt-2">${data[index].description}</p>
+              `;
+              gsap.to(dataContainerRef.current, { opacity: 1, duration: 0.2 });
+            },
+          });
+        },
+        onLeave: () => {
+          gsap.to(card, {
+            scale: 0.8,
+            opacity: 0.5,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(card, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+          // Update data
+          gsap.to(dataContainerRef.current, {
+            opacity: 0,
+            duration: 0.2,
+            onComplete: () => {
+              dataContainerRef.current.innerHTML = `
+                <h1 class="font-extrabold text-3xl text-black">${data[index].name}</h1>
+                <h2 class="text-lg text-gray-500">(${data[index].title})</h2>
+                <p class="text-gray-600 mt-2">${data[index].description}</p>
+              `;
+              gsap.to(dataContainerRef.current, { opacity: 1, duration: 0.2 });
+            },
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(card, {
+            scale: 0.8,
+            opacity: 0.5,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        },
+      });
+    });
+
+    // Set initial data
+    dataContainerRef.current.innerHTML = `
+      <h1 class="font-extrabold text-3xl text-black">${data[0].name}</h1>
+      <h2 class="text-lg text-gray-500">(${data[0].title})</h2>
+      <p class="text-gray-600 mt-2">${data[0].description}</p>
+    `;
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
-    <div className="section-container flex flex-col items-center">
+    <div ref={sectionRef} className="section-container flex flex-col items-center w-full min-h-screen">
       {/* Section Title */}
       <div className="w-full text-start p-14">
         <h5 className="text-gray-500 font-light">Our Team</h5>
@@ -74,52 +171,37 @@ const Section6 = () => {
         <h1 className="font-bold text-3xl text-orange-500">Our Company</h1>
       </div>
 
-      {/* Carousel Container */}
-      <div className="relative flex items-center justify-center w-full max-w-[95%] overflow-hidden">
-        {/* Left Arrow */}
-        <button
-          onClick={prevSlide}
-          aria-label="Previous Slide"
-          className="absolute left-2 md:left-5 text-white text-2xl bg-gray-800 rounded-full size-10 flex justify-center items-center hover:bg-gray-700 transition"
-        >
-          {`<`}
-        </button>
-
-        {/* Slides */}
-        <div className="flex w-full justify-center items-center space-x-1">
-          {data.map((item, index) => (
-            <div
-              key={index}
-              className={`transition-transform duration-500 ease-in-out transform ${
-                index === currentIndex ? "scale-110 opacity-100" : "scale-90 opacity-50"
-              }`}
-            >
-              <div className="relative w-72 md:w-80 h-auto">
+      {/* Horizontal Scroll Container */}
+      <div className="w-full px-10 overflow-hidden flex flex-col md:flex-row items-center gap-8">
+        {/* Cards */}
+        <div className="relative flex items-center">
+          <div
+            ref={cardsContainerRef}
+            className="flex flex-row gap-4 will-change-transform"
+            style={{ width: "max-content" }}
+          >
+            {data.map((item, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-48 md:w-64 h-auto transition-all duration-500 ease-in-out opacity-50 scale-80"
+              >
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-auto object-contain rounded-lg shadow-lg"
+                  className="w-full h-80 object-cover rounded-lg shadow-lg"
                 />
-                {index === currentIndex && (
-                  <div className="absolute bottom-5 left-4 right-4 bg-opacity-70 text-white p-3 rounded-md">
-                    <h1 className="font-semibold text-lg">{item.name}</h1>
-                    <h2 className="text-sm text-gray-300">{item.title}</h2>
-                    <p className="text-xs mt-1">{item.description}</p>
-                  </div>
-                )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Arrows */}
+          <div className="absolute left-0 right-0 flex justify-between pointer-events-none">
+            <span className="text-4xl text-gray-400">←</span>
+            <span className="text-4xl text-gray-400">→</span>
+          </div>
         </div>
 
-        {/* Right Arrow */}
-        <button
-          onClick={nextSlide}
-          aria-label="Next Slide"
-          className="absolute right-2 md:right-5 text-white text-2xl bg-gray-800 rounded-full size-10 flex justify-center items-center hover:bg-gray-700 transition"
-        >
-          {`>`}
-        </button>
+        {/* Data Display */}
+        <div ref={dataContainerRef} className="w-full md:w-1/3 p-4"></div>
       </div>
     </div>
   );

@@ -19,7 +19,6 @@ const Home = () => {
       <Section6 />
       <Section7 />
       <Section8 />
-
     </>
   )
 }

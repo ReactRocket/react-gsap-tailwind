@@ -1,6 +1,7 @@
-import React from 'react'
+
 
 const Section2 = () => {
+
   return (
     <div className='section-container flex p-14'>
         <div className='h-full w-1/3 '>

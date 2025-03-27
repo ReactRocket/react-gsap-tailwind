@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Section8 = () => {
+  const sectionRef = useRef(null);
+  const cardsContainerRef = useRef(null);
+
   const data = [
     {
       name: "Mr. Manoj Singrodia",
@@ -39,8 +46,38 @@ const Section8 = () => {
     },
   ];
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const cardsContainer = cardsContainerRef.current;
+
+    // Calculate the total horizontal scroll distance
+    const scrollDistance = cardsContainer.scrollWidth - window.innerWidth;
+
+    // Create the horizontal scroll animation
+    const scrollTween = gsap.to(cardsContainer, {
+      x: -scrollDistance,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top", // Pin when section hits top of viewport
+        end: () => `+=${scrollDistance}`, // Scroll the full width of cards
+        pin: true, // Pin the section
+        scrub: 1, // Smooth scrolling tied to scroll position
+        anticipatePin: 1,
+        pinSpacing: true, // Maintain space while pinned
+        invalidateOnRefresh: true, // Recalculate on resize
+      },
+    });
+
+    // Cleanup
+    return () => {
+      scrollTween.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <div className="section-container flex flex-col items-center w-full">
+    <div ref={sectionRef} className="section-container flex flex-col items-center w-full min-h-screen">
       {/* Section Title */}
       <div className="w-full text-start p-14">
         <h5 className="text-gray-500 font-light">Updates</h5>
@@ -49,27 +86,33 @@ const Section8 = () => {
       </div>
 
       {/* Horizontal Scroll Container */}
-      <div className="w-full h-full px-10 overflow-hidden">
+      <div className="w-full px-10 overflow-hidden">
         <div
-          className="grid grid-flow-col auto-cols-[minmax(400px,_1fr)] gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
-          style={{ scrollBehavior: "smooth" }}
+          ref={cardsContainerRef}
+          className="flex flex-row gap-4 will-change-transform"
+          style={{ width: "max-content" }} // Ensure container is wide enough for all cards
         >
           {data.map((item, index) => (
             <div
               key={index}
-              className="snap-start  bg-white rounded-lg  p-4 w-full flex flex-col items-center"
+              className="flex-shrink-0 w-[400px] bg-white rounded-lg p-4 flex flex-col items-center"
             >
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-full object-cover"
+                className="w-full h-64 object-cover" // Fixed height for consistency
               />
-              <div className="p-3 text-center  w-full h-full flex flex-col gap-3   bg-[#F470240D]">
-                <div className="flex justify-between items-center"><span>News</span><span>15, Feb, 25</span></div>
+              <div className="p-3 text-center w-full flex flex-col gap-3 bg-[#F470240D]">
+                <div className="flex justify-between items-center">
+                  <span>News</span>
+                  <span>15, Feb, 25</span>
+                </div>
                 <div className="flex flex-col items-start justify-end gap-2 w-full">
                   <h1 className="font-extrabold text-2xl text-black">Lorem Ipsum Dolor</h1>
                   <h1 className="font-extrabold text-2xl text-black">Sit Amet</h1>
-                  <button className="border border-orange text-orange max-w-[200px] px-4 py-2 font-bold">Read More</button>
+                  <button style={{'color':'#f47024'}} className="buttonEffect max-w-[200px]">
+                    Read More
+                  </button>
                 </div>
               </div>
             </div>

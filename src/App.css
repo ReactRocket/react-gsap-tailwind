@@ -4,10 +4,26 @@
 .text-gray {
   color: #28282b;
 }
-.section-container {
+.section-container-1 {
   min-height: 90vh;
+  max-height: 1080px;
   height: 600px;
   width: 100%;
+  overflow: hidden !important;
+}
+.section-container {
+  min-height: 100vh;
+  max-height: 1080px;
+  height: 600px;
+  width: 100%;
+  overflow: hidden !important;
+}
+.footer-container {
+  min-height: 60vh;
+  max-height: 550px;
+  height: 500px;
+  width: 100%;
+  overflow: hidden !important;
 }
 .bg-orange {
   background-color: #f47024;
@@ -16,10 +32,10 @@
   background-color: #28282b;
 }
 .bg-section-1 {
-  background-image: url("/public/media/images/section1-bg.png");
+  background-image: url("/media/images/section1-bg.png");
 }
 .bg-section-1-graph {
-  background-image: url("/public/media/images/Graph.svg");
+  /* background-image: url("/media/images/Graph.svg"); */
   height: 90%;
   width: 100%;
   background-size: auto;
@@ -27,13 +43,13 @@
   background-repeat: no-repeat;
 }
 .bg-section-3-right {
-  background-image: url("/public/media/images/section3-img1.png");
+  background-image: url("/media/images/section3-img1.png");
 }
 .bg-section-3-left {
-  background-image: url("/public/media/images/section3-img2.png");
+  background-image: url("/media/images/section3-img2.png");
 }
 .bg-section-3-main {
-  background-image: url("/public/media/images/section3-img3.png");
+  background-image: url("/media/images/section3-img3.png");
   height: 100%;
   background-size: contain;
   background-position: center;
@@ -42,13 +58,13 @@
   scale: 75%;
 }
 .bg-section-4-img1 {
-  background-image: url("/public/media/images/section4-img1.png");
+  background-image: url("/media/images/section4-img1.png");
 }
 .bg-section-4-img2 {
-  background-image: url("/public/media/images/section4-img2.png");
+  background-image: url("/media/images/section4-img2.png");
 }
 .bg-section-7-img1 {
-    background-image: url("/public/media/images/section7-img1.png");
+    background-image: url("/media/images/section7-img1.png");
   }
 .btn-section-1 {
   border: 2px solid #f47024;
@@ -70,7 +86,6 @@
   text-decoration: none !important;
   overflow: hidden !important;
   transition: border 1s, color 0.5s !important;
-  margin-top: 10px !important;
   transform: anslate3D(0, -100%, 0) !important;
 }
 
@@ -120,7 +135,6 @@
   position: relative; 
   cursor: pointer !important; 
   transition: border 1s, color 0.5s !important; 
-  margin-top: 10px;
   z-index: 1;
 }
 
